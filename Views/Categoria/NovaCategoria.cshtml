@@ -1,0 +1,37 @@
+﻿@model webtest.Objects.Categoria
+
+@{
+    ViewData["Title"] = "Nova Categoria";
+    
+}
+@*Create*@
+<h1>Nova Categoria</h1>
+
+<h4>Categoria</h4>
+<hr />
+<div class="container p-5">
+    <div class="row">
+    <div class="col-4 border border-light rounded p-5 shadow ">
+                         @*Create*@
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">       @*Created*@
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

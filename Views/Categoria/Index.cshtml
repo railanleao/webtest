@@ -1,0 +1,61 @@
+﻿@model IEnumerable<webtest.Objects.Categoria>
+//webtest.Objects.
+@{
+    ViewData["Title"] = "Categoria registradas";
+    
+}
+
+<h1>Categoria registradas</h1>
+
+<div class="container p-5">
+    <div class="boder border-ligth rounded p-5">
+    <a asp-controller="Categorias" asp-action="Nova Categoria" class= "btn btn-sm btn-outline-info">
+        Nova Categoria
+    </a>
+
+    <hr />
+
+    <table class="table table-striped table-hover table-sm">
+    <thead>
+        <tr class="thead-ligth">
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <div class="row">
+                    <a asp-controller="Categorias" asp-action="AtualizarCategoria" asp-route-id="@item.CategoriaId" class="btn btn-sm btn-outline-primary rounded-circle">
+                        <i class="fa fa-pencil-square-o"></i>
+
+                        <form asp-controller="Categorias" asp-action="ExcluirCategoria" asp-route-id="@item.CategoriaId">
+                            <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle">
+                                <i class="fa fa-times-cicle"></i>
+                            </button>
+                        </form>
+                    </a>
+                </div>
+                <a asp-action="Edit" asp-route-id="@item.CategoriaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CategoriaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CategoriaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    </div>
+</div>
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+
